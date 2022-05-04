@@ -1,21 +1,20 @@
-N, K, S = map(int, input().split())
-N = 3   # [0,1,2]
-
-new_list = [x+1 for x in range(N)]
 
 # https://atcoder.jp/contests/keyence2020/tasks/keyence2020_c?lang=ja
 
-# 4 2 3
-   # [1,2,3,4]
-   # 4 は配列にある数字の数
-   # 隣にある数字を足したらSになる (Sは和の条件)
-   # KはSの組み合わせ
+# Reference Ans:
+# https://atcoder.jp/contests/keyence2020/submissions?f.Language=4006&f.LanguageName=Python3&f.Status=AC&f.Task=keyence2020_c&f.User=
 
-for i in range(N):
-  for j in range(N):
+import math
 
-    for k in range(N):
-      if i == j or j == k or k == i:
-        continue
-  # # s = len(N)
-  # print(str(i))
+def main() -> None:
+    n, k, s = map(int, input().split())
+
+    mx = 10**9
+    a = [s] * n
+    for i in range(k, n):
+        a[i] = (s + 1) % mx
+    print(*a)
+
+
+if __name__ == "__main__":
+    main()
